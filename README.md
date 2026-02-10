@@ -1,0 +1,34 @@
+# 📱 BridgeTouch for macOS
+> **Turn your iPhone into a high-precision trackpad for your MacBook.**
+
+---
+
+## 🌟 Overview
+**BridgeTouch** is a seamless utility designed for macOS users who need a portable and intuitive input device. Whether you're presenting, traveling, or simply in need of an extra touch surface, BridgeTouch bridges the gap between your iPhone and your Mac.
+
+## 🚀 Key Features
+* **Precision Trackpad:** Use your iPhone's Retina display as a high-performance multi-touch trackpad.
+* **Seamless Connection:** Connect instantly via your local network without any complicated configuration.
+* **Ultra-Low Latency:** Optimized for fluid cursor movement and tactile responsiveness.
+* **Native Gestures:** Experience a natural extension of your macOS workflow.
+
+## 📥 Installation & Usage
+You can download the latest official release from the **Releases** section on the right.
+
+1. Download the `.dmg` file.
+2. Open the disk image and drag **BridgeTouch** to your Applications folder.
+3. Launch the app and start your local server.
+4. On your iPhone, navigate to the link displayed on your Mac.
+5. You can now use your iPhone as a fully functional trackpad!
+
+## ⚠️ Important Information
+* **License:** All Rights Reserved.
+* **Distribution:** Unauthorized modification or redistribution of this software is strictly prohibited.
+* **Source Code:** This repository is for distribution purposes only; the source code is currently private.
+
+---
+**Developed by NABELLIAN**
+
+**© 2026 NABELLIAN. All rights reserved.**
+
+*Designed with passion for the Apple ecosystem.* 🍎
