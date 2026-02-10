@@ -1,6 +1,8 @@
 # 📱 BridgeTouch for macOS
 > **Turn your iPhone into a high-precision trackpad for your MacBook.**
 
+> **It's easy and safe.**
+
 ---
 
 ## 🌟 Overview
