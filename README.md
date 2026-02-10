@@ -34,3 +34,6 @@ You can download the latest official release from the **Releases** section on th
 **© 2026 NABELLIAN. All rights reserved.**
 
 *Designed with passion for the Apple ecosystem.* 🍎
+
+---
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Donate-yellow?style=for-the-badge&logo=buy-me-a-coffee)](https://www.buymeacoffee.com/nabellian)
