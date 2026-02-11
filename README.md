@@ -23,7 +23,7 @@ You can download the latest official release from the **Releases** section on th
 4. On your iPhone, navigate to the link displayed on your Mac.
 5. You can now use your iPhone as a fully functional trackpad!
 
-## 🖐 If macOS blocks the as an "unidentified developer"
+## 🖐 If macOS blocks the app as an "unidentified developer"
 1. Open **System Settings** and go to **Privacy & Security.**
 2. Scroll down to the **Security** section.
 3. You'll see a message saying "BridgeTouch" was blocked. Click **"Open Anyway"** to launch the app.
