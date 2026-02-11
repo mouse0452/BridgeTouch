@@ -37,7 +37,7 @@ You can download the latest official release from the **Releases** section on th
 
 ---
 ### ☕️ Support the Developer
-**For everyone, for the world!**
+**Development for everyone, for the world!**
 Sponsor a cup of coffee for **NABELLIAN**.
 
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Donate-yellow?style=for-the-badge&logo=buy-me-a-coffee)](https://www.buymeacoffee.com/nabellian)
