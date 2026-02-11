@@ -26,7 +26,7 @@ You can download the latest official release from the **Releases** section on th
 ## ⚠️ Important Information
 * **License:** All Rights Reserved.
 * **Distribution:** Unauthorized modification or redistribution of this software is strictly prohibited.
-* **Source Code:** This repository is for distribution purposes only; the source code is currently private.
+* **Source Code:** This project is **not** open-source, and the source code is not publicly available.
 
 ---
 **Developed by NABELLIAN**
