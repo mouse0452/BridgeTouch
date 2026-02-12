@@ -1,6 +1,7 @@
-# HTML 파일들을 통계에서 제외
-*.html linguist-detectable=false
-*.htm linguist-detectable=false
+# 1. HTML 파일 통계에서 완전히 무시
+*.html linguist-vendored
+*.htm linguist-vendored
 
-# 혹은 Swift를 이 프로젝트의 주력 언어로 강조
+# 2. 모든 Swift 파일을 주력 언어로 강제 인식
 *.swift linguist-detectable=true
+*.swift linguist-documentation=false
