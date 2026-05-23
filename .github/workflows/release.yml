@@ -20,6 +20,7 @@ jobs:
                      -scheme BridgeTouch \
                      -configuration Release \
                      -derivedDataPath build_output \
+                     MACOSX_DEPLOYMENT_TARGET=14.0 \
                      CODE_SIGNING_ALLOWED=NO \
                      CODE_SIGNING_REQUIRED=NO \
                      clean build
