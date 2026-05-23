@@ -38,6 +38,10 @@
 "Update Ready" = "Update Ready";
 "Restart" = "Restart";
 "Relaunch_Message" = "The update has been downloaded. Relaunch the app to apply the update now?";
-
-
-
+/* App Migration */
+"Move_To_Applications_Title" = "Move to Applications Folder Required";
+"Move_To_Applications_Message" = "BridgeTouch must be moved to the Applications folder for proper functioning and seamless automatic updates.";
+"Move_Button" = "Move and Relaunch";
+"Quit_Button" = "Quit App";
+"Migration_Failed_Title" = "Migration Failed";
+"Migration_Failed_Message %@" = "An error occurred while copying to the Applications folder: %@\nPlease drag the app to the Applications folder manually.";

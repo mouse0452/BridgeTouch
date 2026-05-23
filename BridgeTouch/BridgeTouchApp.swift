@@ -5,6 +5,11 @@ struct BridgeTouchApp: App {
     // 앱 전체에서 공유할 업데이트 체커 생성
     @StateObject var updateChecker = UpdateChecker()
     
+    init() {
+        // 앱 실행 시 응용 프로그램 폴더로 이동 확인
+        AppMigrator.migrate()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

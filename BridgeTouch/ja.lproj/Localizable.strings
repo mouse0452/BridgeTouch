@@ -37,6 +37,10 @@
 "Update Ready" = "アップデート完了"; // Wait, "업데이트 완료" in Japanese should be "アップデート完了"
 "Restart" = "再起動";
 "Relaunch_Message" = "アップデートを適用するにはアプリを再起動する必要があります。今すぐ再起動しますか？";
-
-
-
+/* App Migration */
+"Move_To_Applications_Title" = "アプリケーションフォルダへの移動が必要";
+"Move_To_Applications_Message" = "BridgeTouchの正常な動作および自動アップデートのため、アプリをアプリケーションフォルダに移動する必要があります。";
+"Move_Button" = "移動して再起動";
+"Quit_Button" = "アプリを終了";
+"Migration_Failed_Title" = "移動に失敗しました";
+"Migration_Failed_Message %@" = "アプリケーションフォルダへのコピー中にエラーが発生しました：%@\n手動でアプリをアプリケーションフォルダにドラッグしてください。";
