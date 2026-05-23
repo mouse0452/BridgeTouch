@@ -20,10 +20,13 @@ jobs:
                      -scheme BridgeTouch \
                      -configuration Release \
                      -derivedDataPath build_output \
-                     CODE_SIGN_IDENTITY="-" \
+                     CODE_SIGNING_ALLOWED=NO \
                      CODE_SIGNING_REQUIRED=NO \
-                     CODE_SIGNING_ALLOWED=YES \
                      clean build
+
+      - name: Ad-Hoc Sign App
+        run: |
+          codesign --force --deep --sign - build_output/Build/Products/Release/BridgeTouch.app
 
       - name: Zip App Bundle
         run: |
