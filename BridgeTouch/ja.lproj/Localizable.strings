@@ -1,0 +1,42 @@
+/* General */
+"BridgeTouch" = "BridgeTouch";
+"Waiting..." = "待機中...";
+"Checking IP..." = "IPを確認中...";
+"Unknown IP" = "不明なIP";
+"✅ Ready" = "準備完了";
+"❌ Error: %@" = "エラー: %@";
+
+/* Menu Bar */
+"Check for Updates..." = "アップデートを確認...";
+
+/* Settings */
+"Settings" = "設定";
+"Mouse Settings" = "マウス設定";
+"Sensitivity" = "Sensitivity";
+"Natural Scrolling" = "ナチュラルスクロール";
+"Done" = "完了";
+
+/* Server Actions */
+"Start Server" = "サーバーを開始";
+"Restart Server" = "サーバーを再起動";
+"Stop Server" = "サーバーを停止";
+
+
+/* Update Alert */
+"New Version Released 🚀" = "新しいバージョンが登場 🚀";
+"Later" = "あとで";
+"Download" = "ダウンロード";
+"Update_Message %@" = "新しいバージョン(%@)を利用できます！";
+"Scan to connect" = "スキャンして接続";
+"You're Up to Date" = "利用可能なアップデートはありません";
+"OK" = "OK";
+"No_Update_Message" = "現在、最新バージョンのBridgeTouchを使用しています。";
+"Downloading Update..." = "アップデートをダウンロード中...";
+"Progress: %.0f%%" = "進行状況: %.0f%%";
+"Cancel" = "キャンセル";
+"Update Ready" = "アップデート完了"; // Wait, "업데이트 완료" in Japanese should be "アップデート完了"
+"Restart" = "再起動";
+"Relaunch_Message" = "アップデートを適用するにはアプリを再起動する必要があります。今すぐ再起動しますか？";
+
+
+

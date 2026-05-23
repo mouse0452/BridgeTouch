@@ -15,8 +15,10 @@ struct BridgeTouchApp: App {
             // ✨ 상단 메뉴바 > BridgeTouch > [Check for Updates...] 추가
             // 로컬라이징 키: "Check for Updates..."
             CommandGroup(after: .appInfo) {
-                Button("Check for Updates...") {
-                    updateChecker.checkForUpdates()
+                Button {
+                    updateChecker.checkForUpdates(isManual: true)
+                } label: {
+                    Label("Check for Updates...", systemImage: "arrow.clockwise")
                 }
                 .keyboardShortcut("u", modifiers: .command)
             }

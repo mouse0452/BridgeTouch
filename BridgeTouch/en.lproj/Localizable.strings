@@ -1,0 +1,43 @@
+/* General */
+"BridgeTouch" = "BridgeTouch";
+"Waiting..." = "Waiting...";
+"Checking IP..." = "Checking IP...";
+"Unknown IP" = "Unknown IP";
+"✅ Ready" = "Ready";
+"❌ Error: %@" = "Error: %@";
+
+/* Menu Bar */
+"Check for Updates..." = "Check for Updates...";
+
+/* Settings */
+"Settings" = "Settings";
+"Mouse Settings" = "Mouse Settings";
+"Sensitivity" = "Sensitivity";
+"Natural Scrolling" = "Natural Scrolling";
+"Done" = "Done";
+
+/* Server Actions */
+"Start Server" = "Start Server";
+"Restart Server" = "Restart Server";
+"Stop Server" = "Stop Server";
+
+
+/* Update Alert */
+"New Version Released 🚀" = "New Version Released 🚀";
+"Later" = "Later";
+"Download" = "Download";
+// %@ 부분에 버전 숫자(예: 1.0.1)가 자동으로 들어감
+"Update_Message %@" = "New version (%@) is available!";
+"Scan to connect" = "Scan to connect";
+"You're Up to Date" = "No Updates Available";
+"OK" = "OK";
+"No_Update_Message" = "You are currently running the latest version of BridgeTouch.";
+"Downloading Update..." = "Downloading Update...";
+"Progress: %.0f%%" = "Progress: %.0f%%";
+"Cancel" = "Cancel";
+"Update Ready" = "Update Ready";
+"Restart" = "Restart";
+"Relaunch_Message" = "The update has been downloaded. Relaunch the app to apply the update now?";
+
+
+
