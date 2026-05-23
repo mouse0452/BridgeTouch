@@ -1,7 +1,0 @@
-# 1. HTML 파일 통계에서 완전히 무시
-*.html linguist-vendored
-*.htm linguist-vendored
-
-# 2. 모든 Swift 파일을 주력 언어로 강제 인식
-*.swift linguist-detectable=true
-*.swift linguist-documentation=false
