@@ -28,15 +28,17 @@ You can download the latest official release from the **Releases** section on th
 2. Scroll down to the **Security** section.
 3. You'll see a message saying "BridgeTouch" was blocked. Click **"Open Anyway"** to launch the app.
 
-## ⚠️ Important Information
-* **License:** All Rights Reserved.
-* **Distribution:** Unauthorized modification or redistribution of this software is strictly prohibited.
-* **Source Code:** This project is **not** open-source, and the source code is not publicly available.
+## ⚖️ License
+This project is open-source and licensed under the [GNU GPL v3](LICENSE). 
+
+* **Contributions:** Anyone is welcome to contribute, upgrade, and add features to this project.
+* **Usage & Modification:** You are free to run, copy, modify, and distribute this software, provided that any derivative works are also open-sourced under the GPL v3 license.
+* **Commercial Restrictions:** Under the GPL v3 copyleft provisions, any modified versions or distributions of this software must have their source code fully disclosed.
 
 ---
 **Developed by NABELLIAN**
 
-**© 2026 NABELLIAN. All rights reserved.**
+**© 2026 NABELLIAN. Licensed under the GNU GPL v3.**
 
 *Designed with passion for the Apple ecosystem.* 🍎
 
