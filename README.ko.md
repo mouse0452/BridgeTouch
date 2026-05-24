@@ -1,7 +1,7 @@
 # 📱 BridgeTouch for macOS
 > **아이폰을 맥북/맥용 고정밀 트랙패드로 변환해보세요.**
 
-🌐 **[English Version](README.md)**
+[![English (US)](https://img.shields.io/badge/English%20(US)-gray?style=flat-square)](README.md) [![한국어 (대한민국)](https://img.shields.io/badge/한국어%20(대한민국)-0969da?style=flat-square)](#)
 
 ---
 
