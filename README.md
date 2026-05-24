@@ -47,4 +47,4 @@ This project is open-source and licensed under the [GNU GPL v3](LICENSE).
 **Development for everyone, for the world!**
 Sponsor **NABELLIAN** to support ongoing development:
 
-[![Lemon Squeezy](docs/assets/lemon_badge.svg)](https://nabellian.lemonsqueezy.com/checkout/buy/35b17497-2345-4ba0-9ffb-e960d8010e79) [![Toonation](docs/assets/toon_badge.svg)](https://toon.at/donate/nabellian)
+[![Lemon Squeezy](docs/assets/lemon_badge.svg?v=2)](https://nabellian.lemonsqueezy.com/checkout/buy/35b17497-2345-4ba0-9ffb-e960d8010e79) [![Toonation](docs/assets/toon_badge.svg?v=2)](https://toon.at/donate/nabellian)
