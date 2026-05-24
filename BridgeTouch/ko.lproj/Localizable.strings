@@ -14,7 +14,9 @@
 "Mouse Settings" = "마우스 설정";
 "Sensitivity" = "감도";
 "Natural Scrolling" = "자연스러운 스크롤";
+"Show in Menu Bar" = "메뉴 바에 표시";
 "Done" = "완료";
+"Port" = "포트 번호";
 
 /* Server Actions */
 "Start Server" = "서버 시작";

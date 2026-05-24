@@ -14,7 +14,9 @@
 "Mouse Settings" = "Mouse Settings";
 "Sensitivity" = "Sensitivity";
 "Natural Scrolling" = "Natural Scrolling";
+"Show in Menu Bar" = "Show in Menu Bar";
 "Done" = "Done";
+"Port" = "Port";
 
 /* Server Actions */
 "Start Server" = "Start Server";

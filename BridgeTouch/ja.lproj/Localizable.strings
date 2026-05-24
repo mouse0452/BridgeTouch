@@ -14,7 +14,9 @@
 "Mouse Settings" = "マウス設定";
 "Sensitivity" = "Sensitivity";
 "Natural Scrolling" = "ナチュラルスクロール";
+"Show in Menu Bar" = "メニューバーに表示";
 "Done" = "完了";
+"Port" = "ポート番号";
 
 /* Server Actions */
 "Start Server" = "サーバーを開始";

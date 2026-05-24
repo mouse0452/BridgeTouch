@@ -190,10 +190,18 @@ class UpdateChecker: NSObject, ObservableObject, URLSessionDownloadDelegate {
         try? fileManager.removeItem(at: tempDir)
         try? fileManager.removeItem(at: downloadedFileURL)
         
-        // 7. 교체 작업을 즉시 진행 (실행 중인 앱은 메모리 상에서 계속 동작)
+        // 7. 교체 작업을 즉시 진행 (실행 중인 앱은 메모리 상에서 계속 동작하도록 .old로 이름 변경 후 교체)
+        let oldAppURL = parentDir.appendingPathComponent("BridgeTouch.old.app")
         
         do {
-            try fileManager.removeItem(at: currentAppURL)
+            if fileManager.fileExists(atPath: oldAppURL.path) {
+                try? fileManager.removeItem(at: oldAppURL)
+            }
+            
+            // 기존 앱을 .old로 이름 변경 (실행 중이어도 파일 잠김 오류가 발생하지 않음)
+            try fileManager.moveItem(at: currentAppURL, to: oldAppURL)
+            
+            // 새 앱을 원래 경로로 이동
             try fileManager.moveItem(at: safeTempNewAppURL, to: currentAppURL)
             
             // 성공 시, 사용자에게 재시작 여부를 묻는 알림창 트리거
@@ -210,6 +218,8 @@ class UpdateChecker: NSObject, ObservableObject, URLSessionDownloadDelegate {
     // 앱 교체 후 재시작 진행
     func relaunchApp() {
         let currentAppPath = Bundle.main.bundleURL.path
+        let parentDirPath = Bundle.main.bundleURL.deletingLastPathComponent().path
+        let oldAppPath = (parentDirPath as NSString).appendingPathComponent("BridgeTouch.old.app")
         let currentPID = ProcessInfo.processInfo.processIdentifier
         
         let script = """
@@ -217,6 +227,8 @@ class UpdateChecker: NSObject, ObservableObject, URLSessionDownloadDelegate {
             while kill -0 \(currentPID) 2>/dev/null; do
                 sleep 0.1
             done
+            # 기존 구버전 파일 삭제
+            rm -rf "\(oldAppPath)"
             open "\(currentAppPath)"
         ) &
         """
@@ -460,6 +472,16 @@ class BridgeServer: ObservableObject {
     @AppStorage("isNaturalScrolling") var isNaturalScrolling: Bool = false {
         didSet { mouseController.isNaturalScrolling = isNaturalScrolling }
     }
+    @AppStorage("serverPort") var serverPort: Int = 8080 {
+        didSet {
+            if isReady {
+                stop()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.start()
+                }
+            }
+        }
+    }
     
     var listener: NWListener?
     var activeConnections: [NWConnection] = []
@@ -475,7 +497,7 @@ class BridgeServer: ObservableObject {
     
     func start() {
         do {
-            listener = try NWListener(using: .tcp, on: .init(integerLiteral: 8080))
+            listener = try NWListener(using: .tcp, on: NWEndpoint.Port(integerLiteral: UInt16(serverPort)))
             listener?.newConnectionHandler = { connection in
                 connection.start(queue: .main)
                 self.activeConnections.append(connection)
@@ -775,15 +797,27 @@ struct SettingsView: View {
     @EnvironmentObject var updateChecker: UpdateChecker
     @Binding var sensitivity: Double
     @Binding var isNaturalScrolling: Bool
+    @Binding var serverPort: Int
+    
+    @AppStorage("showMenuBarIcon") var showMenuBarIcon: Bool = true
+    
+    @State private var localPort: Int
+    
+    init(sensitivity: Binding<Double>, isNaturalScrolling: Binding<Bool>, serverPort: Binding<Int>) {
+        self._sensitivity = sensitivity
+        self._isNaturalScrolling = isNaturalScrolling
+        self._serverPort = serverPort
+        self._localPort = State(initialValue: serverPort.wrappedValue)
+    }
     
     var body: some View {
         NavigationStack {
             Form {
-                Section(String(localized: "Mouse Settings")) { // "Mouse Settings"
+                Section {
                     VStack(alignment: .leading) {
                         HStack {
                             Image(systemName: "cursorarrow.motionlines").foregroundStyle(.secondary)
-                            Text("Sensitivity") // "Sensitivity"
+                            Text(String(localized: "Sensitivity"))
                             Spacer()
                             Text(String(format: "%.1f", sensitivity)).monospacedDigit().foregroundStyle(.secondary)
                         }
@@ -792,8 +826,23 @@ struct SettingsView: View {
                     Toggle(isOn: $isNaturalScrolling) {
                         HStack {
                             Image(systemName: "arrow.up.arrow.down").foregroundStyle(.secondary)
-                            Text("Natural Scrolling") // "Natural Scrolling"
+                            Text(String(localized: "Natural Scrolling"))
                         }
+                    }
+                    Toggle(isOn: $showMenuBarIcon) {
+                        HStack {
+                            Image(systemName: "menubar.arrow.up.rectangle").foregroundStyle(.secondary)
+                            Text(String(localized: "Show in Menu Bar"))
+                        }
+                    }
+                    HStack {
+                        Image(systemName: "network").foregroundStyle(.secondary)
+                        Text(String(localized: "Port"))
+                        Spacer()
+                        TextField("", value: $localPort, format: .number.grouping(.never))
+                            .frame(width: 80)
+                            .multilineTextAlignment(.trailing)
+                            .textFieldStyle(.roundedBorder)
                     }
                 }
                 
@@ -803,7 +852,7 @@ struct SettingsView: View {
                     } label: {
                         HStack {
                             Image(systemName: "arrow.clockwise").foregroundStyle(.secondary)
-                            Text("Check for Updates...")
+                            Text(String(localized: "Check for Updates..."))
                             Spacer()
                             Image(systemName: "chevron.right").foregroundStyle(.secondary)
                         }
@@ -813,16 +862,25 @@ struct SettingsView: View {
                 }
             }
             .formStyle(.grouped)
-            .navigationTitle(Text("Settings")) // "Settings"
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button(String(localized: "Done")) { dismiss() } } } // "Done"
+            .navigationTitle(String(localized: "Settings"))
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(String(localized: "Done")) {
+                        if localPort >= 1024 && localPort <= 65535 {
+                            serverPort = localPort
+                        }
+                        dismiss()
+                    }
+                }
+            }
         }
-        .frame(width: 350, height: 260)
+        .frame(width: 350, height: 320)
     }
 }
 
 // MARK: - 4. 메인 화면
 struct ContentView: View {
-    @StateObject var server = BridgeServer()
+    @EnvironmentObject var server: BridgeServer
     
     // BridgeTouchApp에서 만든 걸 받아서 씁니다
     @EnvironmentObject var updateChecker: UpdateChecker
@@ -877,13 +935,13 @@ struct ContentView: View {
                         Divider()
                         HStack {
                             Image(systemName: "link").foregroundStyle(.secondary)
-                            Text("http://\(server.ipAddress):8080")
+                            Text("http://\(server.ipAddress):\(server.serverPort)")
                                 .font(.system(.body, design: .monospaced))
                                 .textSelection(.enabled)
                             Spacer()
                         }.padding().background(Color(NSColor.controlBackgroundColor))
                         
-                        if server.isReady, let qrImage = generateQRCode(from: "http://\(server.ipAddress):8080") {
+                        if server.isReady, let qrImage = generateQRCode(from: "http://\(server.ipAddress):\(server.serverPort)") {
                             Divider()
                             VStack(spacing: 8) {
                                 Image(nsImage: qrImage)
@@ -945,8 +1003,12 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $showSettings) {
-                SettingsView(sensitivity: $server.sensitivity, isNaturalScrolling: $server.isNaturalScrolling)
-                    .environmentObject(updateChecker)
+                SettingsView(
+                    sensitivity: $server.sensitivity,
+                    isNaturalScrolling: $server.isNaturalScrolling,
+                    serverPort: $server.serverPort
+                )
+                .environmentObject(updateChecker)
             }
             .sheet(isPresented: $updateChecker.showDownloadProgress) {
                 DownloadProgressView(progress: updateChecker.downloadProgress) {
