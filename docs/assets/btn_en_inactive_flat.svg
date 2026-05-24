@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="160" height="38" viewBox="0 0 160 38">
   <style>
-    .bg { fill: rgba(0, 0, 0, 0.05); stroke: rgba(0, 0, 0, 0.12); }
+    .bg { fill: #f2f2f7; }
     .txt { fill: #3c3c43; }
     @media (prefers-color-scheme: dark) {
-      .bg { fill: rgba(255, 255, 255, 0.08); stroke: rgba(255, 255, 255, 0.15); }
+      .bg { fill: #2c2c2e; }
       .txt { fill: #eaeaea; }
     }
   </style>
-  <rect class="bg" x="0.5" y="0.5" width="159" height="37" rx="18.5" ry="18.5" stroke-width="1"/>
+  <rect class="bg" width="160" height="38" rx="19"/>
   <text class="txt" x="80" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" text-anchor="middle" letter-spacing="0.2">English (US)</text>
 </svg>
