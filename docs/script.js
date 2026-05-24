@@ -36,7 +36,7 @@ async function initLatestVersionFetcher() {
 function initTrackpadSimulator() {
     const trackpad = document.getElementById('sim-trackpad');
     const touchPoint = document.getElementById('sim-touch-point');
-    const instruction = document.querySelector('.trackpad-instruction');
+    const instruction = document.getElementById('trackpad-instruction');
     const cursor = document.getElementById('sim-cursor');
     const macScreen = document.getElementById('sim-mac-screen');
     
@@ -44,10 +44,6 @@ function initTrackpadSimulator() {
     
     let isTracking = false;
     let hasInteracted = false;
-    
-    // Dimensions
-    const trackpadRect = trackpad.getBoundingClientRect();
-    const macRect = { width: 304, height: 178 }; // Adjusted inside borders (320px - 16px border, 200px - 16px border/menubar)
     
     // Hide instruction on first interaction
     const hideInstruction = () => {
@@ -79,10 +75,10 @@ function initTrackpadSimulator() {
         const normX = x / rect.width;
         const normY = y / rect.height;
         
-        // Map to Mac Screen coordinates (excluding menubar)
-        // Menu bar is 14px high, so cursor Y goes from 14 to macScreen height (186px)
-        const macCursorX = normX * (304 - 15); // subtract cursor width to keep it on screen
-        const macCursorY = 14 + (normY * (186 - 14 - 15)); // offset for menu bar & cursor height
+        // Map to Mac Screen coordinates (width: 296px, height: 176px excluding outer borders)
+        // Menu bar is 14px high.
+        const macCursorX = normX * (296 - 18); // subtract cursor width to keep it on screen
+        const macCursorY = 14 + (normY * (176 - 14 - 18)); // offset for menu bar & cursor height
         
         cursor.style.left = `${macCursorX}px`;
         cursor.style.top = `${macCursorY}px`;
@@ -108,7 +104,6 @@ function initTrackpadSimulator() {
     });
     
     trackpad.addEventListener('mouseleave', () => {
-        // We can keep tracking even if mouse leaves slightly, but hide touchPoint
         touchPoint.style.opacity = '0';
     });
     
