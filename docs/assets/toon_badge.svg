@@ -11,16 +11,16 @@
   <g clip-path="url(#r)">
     <!-- Left segment: Dark theme -->
     <rect width="50" height="32" fill="#1A191E"/>
-    <!-- Right segment: Toonation Orange -->
-    <rect x="50" width="130" height="32" fill="#FF5C00"/>
+    <!-- Right segment: Toonation Sky Blue -->
+    <rect x="50" width="130" height="32" fill="#00ADEF"/>
     <rect width="180" height="32" fill="url(#g)"/>
   </g>
   <!-- Chat/Message Donation Icon -->
-  <g transform="translate(17, 8)" fill="none" stroke="#FF5C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g transform="translate(17, 8)" fill="none" stroke="#00ADEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M15 2H2C1.4 2 1 2.4 1 3V10C1 10.6 1.4 11 2 11H5L8 14V11H15C15.6 11 16 10.6 16 10V3C16 2.4 15.6 2 15 2Z"/>
     <path d="M5 6H12" stroke-width="1.5"/>
     <path d="M5 8H9" stroke-width="1.5"/>
   </g>
   <!-- Text -->
-  <text x="115" y="20" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Outfit', 'Segoe UI', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Toonation</text>
+  <text x="115" y="20" fill="#000000" font-family="-apple-system, BlinkMacSystemFont, 'Outfit', 'Segoe UI', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Toonation</text>
 </svg>
