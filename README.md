@@ -45,6 +45,7 @@ This project is open-source and licensed under the [GNU GPL v3](LICENSE).
 ---
 ### ☕️ Support the Developer
 **Development for everyone, for the world!**
-Sponsor a cup of coffee for **NABELLIAN**.
+Sponsor **NABELLIAN** to support ongoing development:
 
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Donate-yellow?style=for-the-badge&logo=buy-me-a-coffee)](https://www.buymeacoffee.com/nabellian)
+* [Sponsor via Lemon Squeezy](https://nabellian.lemonsqueezy.com/checkout/buy/35b17497-2345-4ba0-9ffb-e960d8010e79)
+* [Sponsor via Toon.at (투네이션 후원)](https://toon.at/donate/nabellian)
