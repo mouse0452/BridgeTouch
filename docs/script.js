@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 async function initLatestVersionFetcher() {
     const versionEl = document.getElementById('latest-version');
+    const heroBtn = document.getElementById('download-cta');
+    const navBtn = document.getElementById('nav-download-btn');
     const githubUser = 'mouse0452';
     const repoName = 'BridgeTouch';
     
@@ -23,9 +25,19 @@ async function initLatestVersionFetcher() {
         if (data && data.tag_name) {
             versionEl.textContent = data.tag_name;
         }
+        
+        // Find .dmg asset in the release and set direct download URLs
+        if (data && data.assets && data.assets.length > 0) {
+            const dmgAsset = data.assets.find(asset => asset.name.endsWith('.dmg'));
+            if (dmgAsset && dmgAsset.browser_download_url) {
+                const directUrl = dmgAsset.browser_download_url;
+                if (heroBtn) heroBtn.href = directUrl;
+                if (navBtn) navBtn.href = directUrl;
+            }
+        }
     } catch (error) {
         console.warn('Failed to fetch latest release version from GitHub:', error);
-        // Fallback value is already set in HTML (v1.0.0)
+        // Fallback values are set in HTML (pointing to the releases index page)
     }
 }
 
