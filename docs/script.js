@@ -26,11 +26,15 @@ async function initLatestVersionFetcher() {
             versionEl.textContent = data.tag_name;
         }
         
-        // Find .dmg asset in the release and set direct download URLs
+        // Find .dmg, .zip, or .pkg asset in the release and set direct download URLs
         if (data && data.assets && data.assets.length > 0) {
-            const dmgAsset = data.assets.find(asset => asset.name.endsWith('.dmg'));
-            if (dmgAsset && dmgAsset.browser_download_url) {
-                const directUrl = dmgAsset.browser_download_url;
+            const buildAsset = data.assets.find(asset => 
+                asset.name.endsWith('.dmg') || 
+                asset.name.endsWith('.zip') || 
+                asset.name.endsWith('.pkg')
+            );
+            if (buildAsset && buildAsset.browser_download_url) {
+                const directUrl = buildAsset.browser_download_url;
                 if (heroBtn) heroBtn.href = directUrl;
                 if (navBtn) navBtn.href = directUrl;
             }
