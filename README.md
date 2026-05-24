@@ -21,8 +21,8 @@
 ## 📥 Installation & Usage
 You can download the latest official release from the **Releases** section on the right.
 
-1. Download the `.dmg` file.
-2. Open the disk image and drag **BridgeTouch** to your Applications folder.
+1. Download the `.zip` file.
+2. Unzip the zip file and drag **BridgeTouch.app** to your Applications folder.
 3. Launch the app and start your local server.
 4. On your iPhone, navigate to the link displayed on your Mac.
 5. You can now use your iPhone as a fully functional trackpad!
