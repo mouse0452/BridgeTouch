@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BridgeTouch - iPhone을 Mac의 스마트 트랙패드로</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="BridgeTouch는 iPhone의 레티나 스크린을 고정밀 멀티 터치 트랙패드로 변환하여 Mac을 제어할 수 있게 해주는 혁신적인 macOS 네이티브 유틸리티 앱입니다.">
+    <meta name="keywords" content="BridgeTouch, Mac, iPhone, 트랙패드, 마우스, 무선 연결, macOS, 유틸리티, 오픈소스, 원격 제어">
+    <meta name="author" content="NABELLIAN">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mouse0452.github.io/BridgeTouch/">
+    <meta property="og:title" content="BridgeTouch - iPhone을 Mac의 스마트 트랙패드로">
+    <meta property="og:description" content="복잡한 설정 없이 iPhone을 Mac의 고정밀 트랙패드로 사용하세요. 지연 시간 없는 부드러운 움직임을 제공합니다.">
+    <meta property="og:image" content="assets/hero.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mouse0452.github.io/BridgeTouch/">
+    <meta property="twitter:title" content="BridgeTouch - iPhone을 Mac의 스마트 트랙패드로">
+    <meta property="twitter:description" content="복잡한 설정 없이 iPhone을 Mac의 고정밀 트랙패드로 사용하세요. 지연 시간 없는 부드러운 움직임을 제공합니다.">
+    <meta property="twitter:image" content="assets/hero.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Glows -->
+    <div class="background-glow bg-glow-1"></div>
+    <div class="background-glow bg-glow-2"></div>
+
+    <!-- Navigation Header -->
+    <header class="main-header" id="header">
+        <div class="container header-container">
+            <a href="#" class="logo" id="logo-link">
+                <span class="logo-icon">📱</span>
+                <span class="logo-text">BridgeTouch</span>
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#features" class="nav-link">주요 기능</a>
+                <a href="#demo" class="nav-link">체험하기</a>
+                <a href="#setup" class="nav-link">사용 방법</a>
+                <a href="#download" class="btn btn-secondary nav-btn" id="nav-download-link">다운로드</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge" id="oss-badge">GNU GPL v3 오픈소스 프로젝트</div>
+                <h1 class="hero-title">
+                    iPhone을 Mac의<br>
+                    <span class="gradient-text">스마트 트랙패드</span>로.
+                </h1>
+                <p class="hero-subtitle">
+                    번거로운 동글이나 케이블 없이, 같은 Wi-Fi에 연결된 iPhone의 레티나 스크린을 고성능 터치패드로 활용해 보세요. 딜레이 없는 완벽한 반응 속도를 제공합니다.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://github.com/mouse0452/BridgeTouch/releases/latest" class="btn btn-primary" id="hero-download-btn">
+                        <span>macOS용 다운로드</span>
+                        <span class="version-tag" id="latest-version">v1.0.0</span>
+                    </a>
+                    <a href="https://github.com/mouse0452/BridgeTouch" class="btn btn-outline" id="hero-github-btn" target="_blank" rel="noopener">
+                        <span>GitHub 저장소</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="hero-glass-card">
+                    <img src="assets/hero.png" alt="BridgeTouch Mac & iPhone Interaction Concept" class="hero-image" id="hero-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Simulator Section -->
+    <section class="demo-section" id="demo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">직접 체험해 보세요</h2>
+                <p class="section-subtitle">
+                    왼쪽의 가상 iPhone 화면 위를 드래그해 보세요. 오른쪽 Mac 화면의 커서가 실시간으로 부드럽게 움직입니다.
+                </p>
+            </div>
+            <div class="simulator-wrapper">
+                <!-- iPhone Simulator (Trackpad Area) -->
+                <div class="sim-phone-container">
+                    <div class="phone-frame">
+                        <div class="phone-speaker"></div>
+                        <div class="phone-screen" id="sim-trackpad">
+                            <div class="trackpad-instruction">
+                                <span class="hand-icon">👆</span>
+                                <p>이 영역을 손가락이나 마우스로 드래그하세요</p>
+                            </div>
+                            <div class="touch-point" id="sim-touch-point"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Connection Beam -->
+                <div class="sim-connection">
+                    <div class="connection-line"></div>
+                </div>
+
+                <!-- Mac Simulator (Cursor Screen) -->
+                <div class="sim-mac-container">
+                    <div class="mac-frame">
+                        <div class="mac-screen" id="sim-mac-screen">
+                            <div class="mac-menu-bar">
+                                <span class="mac-menu-item"></span>
+                                <span class="mac-menu-item">BridgeTouch</span>
+                                <span class="mac-menu-item">도움말</span>
+                            </div>
+                            <div class="mac-app-window">
+                                <div class="window-title-bar">
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                </div>
+                                <div class="window-content">
+                                    <h3>BridgeTouch Server</h3>
+                                    <div class="status-indicator ready">서버 가동 중</div>
+                                    <p class="ip-address">http://192.168.0.5:8080</p>
+                                </div>
+                            </div>
+                            <!-- Cursor -->
+                            <div class="mac-cursor" id="sim-cursor">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1V14.6738L5.59078 10.9859L9.56942 19L12.7845 17.3925L8.85764 9.42958L14.6068 9.42958L1 1Z" fill="white" stroke="black" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mac-stand"></div>
+                        <div class="mac-base"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">모든 세부 기능이 최적화되었습니다</h2>
+                <p class="section-subtitle">단순한 마우스 제어를 넘어, 맥의 완벽한 확장 디바이스로 작동하도록 설계되었습니다.</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card" id="feat-precision">
+                    <div class="feature-icon">🎯</div>
+                    <h3>초정밀 터치 및 지연 없음</h3>
+                    <p>밀리초(ms) 단위의 응답 속도로 설계되어 마우스 포인터가 손가락 끝을 정확하게 따라옵니다.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card" id="feat-connect">
+                    <div class="feature-icon">⚡</div>
+                    <h3>초간편 QR 코드 연결</h3>
+                    <p>별도의 클라이언트 앱 설치 없이, 화면에 표시된 QR 코드를 iPhone으로 스캔하기만 하면 즉시 연결됩니다.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card" id="feat-port">
+                    <div class="feature-icon">🔒</div>
+                    <h3>커스텀 포트 구성</h3>
+                    <p>기본 8080 포트 외에도 환경에 따라 사용자가 원하는 포트 번호를 지정하여 충돌을 막고 안전하게 서버를 가동할 수 있습니다.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card" id="feat-menubar">
+                    <div class="feature-icon">🖥️</div>
+                    <h3>메뉴 바 완벽 통합</h3>
+                    <p>메뉴 바 아이콘을 통해 앱 창을 띄우지 않고도 서버 가동/중단, 연결 링크 복사, 업데이트 확인 등 핵심 조작을 손쉽게 수행할 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Setup Guide Section -->
+    <section class="setup-section" id="setup">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">단 3단계로 연결하기</h2>
+                <p class="section-subtitle">앱을 켜고 스캔하면 끝입니다. 그 어떤 추가 과정도 필요 없습니다.</p>
+            </div>
+            
+            <div class="setup-timeline">
+                <!-- Step 1 -->
+                <div class="setup-step" id="step-1">
+                    <div class="step-num">1</div>
+                    <div class="step-info">
+                        <h3>앱 다운로드 및 설치</h3>
+                        <p>최신 버전의 `.dmg` 설치 파일을 다운로드하여 <code>Applications</code> 폴더로 드래그합니다.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="setup-step" id="step-2">
+                    <div class="step-num">2</div>
+                    <div class="step-info">
+                        <h3>서버 시작 및 확인</h3>
+                        <p>BridgeTouch 앱을 실행하고 'Start Server' 버튼을 누릅니다. 화면에 전용 포트 주소와 QR 코드가 나타납니다.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="setup-step" id="step-3">
+                    <div class="step-num">3</div>
+                    <div class="step-info">
+                        <h3>QR 코드 스캔 및 제어</h3>
+                        <p>iPhone의 기본 카메라 앱으로 QR 코드를 비춰 접속합니다. 곧바로 모바일 화면이 고정밀 트랙패드로 전환됩니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsor/Support Section -->
+    <section class="sponsor-section" id="sponsor">
+        <div class="container">
+            <div class="sponsor-card">
+                <h2>프로젝트 후원 및 기여하기 ☕</h2>
+                <p>BridgeTouch는 오픈소스 생태계를 지지하는 GNU GPL v3 라이선스로 개발되고 있습니다. 이 프로젝트가 마음에 드셨다면 개발자에게 커피 한 잔을 후원하거나 깃허브에서 기여(Contribution)해 주세요!</p>
+                <div class="sponsor-actions">
+                    <a href="https://www.buymeacoffee.com/nabellian" class="btn btn-primary" id="bmc-btn" target="_blank" rel="noopener">
+                        <span>커피 후원하기 (Buy Me a Coffee)</span>
+                    </a>
+                    <a href="https://github.com/mouse0452/BridgeTouch" class="btn btn-outline" id="repo-btn" target="_blank" rel="noopener">
+                        <span>GitHub에서 기여하기</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer" id="footer">
+        <div class="container footer-container">
+            <p class="copyright">© 2026 NABELLIAN. Licensed under GNU GPL v3.</p>
+            <p class="tagline">Designed with passion for the Apple ecosystem. 🍎</p>
+        </div>
+    </footer>
+
+    <!-- JS Link -->
+    <script src="script.js"></script>
+</body>
+</html>

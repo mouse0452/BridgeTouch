@@ -1,0 +1,136 @@
+/* ==========================================
+   BridgeTouch - Interactive JavaScript
+   ========================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    initLatestVersionFetcher();
+    initTrackpadSimulator();
+});
+
+/**
+ * Fetch the latest release tag from GitHub and update the download button.
+ */
+async function initLatestVersionFetcher() {
+    const versionEl = document.getElementById('latest-version');
+    const githubUser = 'mouse0452';
+    const repoName = 'BridgeTouch';
+    
+    try {
+        const response = await fetch(`https://api.github.com/repos/${githubUser}/${repoName}/releases/latest`);
+        if (!response.ok) throw new Error('Network response was not ok');
+        
+        const data = await response.json();
+        if (data && data.tag_name) {
+            versionEl.textContent = data.tag_name;
+        }
+    } catch (error) {
+        console.warn('Failed to fetch latest release version from GitHub:', error);
+        // Fallback value is already set in HTML (v1.0.0)
+    }
+}
+
+/**
+ * Interactive trackpad simulator.
+ * Moving mouse/touch inside phone simulator moves the cursor on Mac simulator.
+ */
+function initTrackpadSimulator() {
+    const trackpad = document.getElementById('sim-trackpad');
+    const touchPoint = document.getElementById('sim-touch-point');
+    const instruction = document.querySelector('.trackpad-instruction');
+    const cursor = document.getElementById('sim-cursor');
+    const macScreen = document.getElementById('sim-mac-screen');
+    
+    if (!trackpad || !touchPoint || !cursor || !macScreen) return;
+    
+    let isTracking = false;
+    let hasInteracted = false;
+    
+    // Dimensions
+    const trackpadRect = trackpad.getBoundingClientRect();
+    const macRect = { width: 304, height: 178 }; // Adjusted inside borders (320px - 16px border, 200px - 16px border/menubar)
+    
+    // Hide instruction on first interaction
+    const hideInstruction = () => {
+        if (!hasInteracted) {
+            instruction.style.opacity = '0';
+            setTimeout(() => instruction.style.display = 'none', 500);
+            hasInteracted = true;
+        }
+    };
+    
+    // Position updater
+    const updatePosition = (clientX, clientY) => {
+        const rect = trackpad.getBoundingClientRect();
+        
+        // Relative mouse coordinates within the trackpad
+        let x = clientX - rect.left;
+        let y = clientY - rect.top;
+        
+        // Clamp inside trackpad bounds
+        x = Math.max(0, Math.min(x, rect.width));
+        y = Math.max(0, Math.min(y, rect.height));
+        
+        // Update touch point dot on simulated iPhone screen
+        touchPoint.style.left = `${x}px`;
+        touchPoint.style.top = `${y}px`;
+        touchPoint.style.opacity = '1';
+        
+        // Normalize coordinates (0.0 to 1.0)
+        const normX = x / rect.width;
+        const normY = y / rect.height;
+        
+        // Map to Mac Screen coordinates (excluding menubar)
+        // Menu bar is 14px high, so cursor Y goes from 14 to macScreen height (186px)
+        const macCursorX = normX * (304 - 15); // subtract cursor width to keep it on screen
+        const macCursorY = 14 + (normY * (186 - 14 - 15)); // offset for menu bar & cursor height
+        
+        cursor.style.left = `${macCursorX}px`;
+        cursor.style.top = `${macCursorY}px`;
+    };
+    
+    // --- Mouse Events ---
+    trackpad.addEventListener('mousedown', (e) => {
+        isTracking = true;
+        hideInstruction();
+        updatePosition(e.clientX, e.clientY);
+    });
+    
+    window.addEventListener('mousemove', (e) => {
+        if (!isTracking) return;
+        updatePosition(e.clientX, e.clientY);
+    });
+    
+    window.addEventListener('mouseup', () => {
+        if (isTracking) {
+            isTracking = false;
+            touchPoint.style.opacity = '0';
+        }
+    });
+    
+    trackpad.addEventListener('mouseleave', () => {
+        // We can keep tracking even if mouse leaves slightly, but hide touchPoint
+        touchPoint.style.opacity = '0';
+    });
+    
+    // --- Touch Events (for mobile visitors) ---
+    trackpad.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 0) return;
+        isTracking = true;
+        hideInstruction();
+        const touch = e.touches[0];
+        updatePosition(touch.clientX, touch.clientY);
+        e.preventDefault(); // Prevent scrolling while using simulated trackpad
+    }, { passive: false });
+    
+    trackpad.addEventListener('touchmove', (e) => {
+        if (!isTracking || e.touches.length === 0) return;
+        const touch = e.touches[0];
+        updatePosition(touch.clientX, touch.clientY);
+        e.preventDefault();
+    }, { passive: false });
+    
+    trackpad.addEventListener('touchend', () => {
+        isTracking = false;
+        touchPoint.style.opacity = '0';
+    });
+}
