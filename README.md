@@ -47,5 +47,4 @@ This project is open-source and licensed under the [GNU GPL v3](LICENSE).
 **Development for everyone, for the world!**
 Sponsor **NABELLIAN** to support ongoing development:
 
-* [Sponsor via Lemon Squeezy](https://nabellian.lemonsqueezy.com/checkout/buy/35b17497-2345-4ba0-9ffb-e960d8010e79)
-* [Sponsor via Toon.at (투네이션 후원)](https://toon.at/donate/nabellian)
+[![Lemon Squeezy](docs/assets/lemon_badge.svg)](https://nabellian.lemonsqueezy.com/checkout/buy/35b17497-2345-4ba0-9ffb-e960d8010e79) [![Toonation](docs/assets/toon_badge.svg)](https://toon.at/donate/nabellian)

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="32" viewBox="0 0 180 32">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".1"/>
+      <stop offset="1" stop-opacity=".1"/>
+    </linearGradient>
+    <clipPath id="r">
+      <rect width="180" height="32" rx="6"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#r)">
+    <!-- Left segment: Dark theme -->
+    <rect width="50" height="32" fill="#1A191E"/>
+    <!-- Right segment: Lemon Squeezy neon yellow/green -->
+    <rect x="50" width="130" height="32" fill="#EBF96F"/>
+    <rect width="180" height="32" fill="url(#g)"/>
+  </g>
+  <!-- Lemon Icon -->
+  <g transform="translate(17, 7)" fill="none" stroke="#EBF96F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 1C5.5 1 2.5 3.5 2 7C1.5 10.5 4 14 7.5 14.5C11 15 14.5 13 15.5 9.5C16.5 6 14.5 2.5 11 1.5C10.3 1.2 9.7 1 9 1Z"/>
+    <path d="M9 1C8.5 2.5 7 3.5 5.5 3.5" stroke-width="1.5"/>
+  </g>
+  <!-- Text -->
+  <text x="115" y="20" fill="#000000" font-family="-apple-system, BlinkMacSystemFont, 'Outfit', 'Segoe UI', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Lemon Squeezy</text>
+</svg>
